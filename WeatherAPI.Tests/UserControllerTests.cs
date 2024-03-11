@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Moq;
 using WeatherAPI.Controllers;
 using WeatherAPI.Services;
@@ -12,8 +13,9 @@ namespace WeatherAPI.Tests
 
         public UserControllerTests()
         {
+            IConfiguration configuration = new ConfigurationBuilder().Build();
             _userServiceMock = new Mock<IUserService>();
-            _userController = new UserController(_userServiceMock.Object);
+            _userController = new UserController(_userServiceMock.Object, configuration);
         }
 
         [Fact]

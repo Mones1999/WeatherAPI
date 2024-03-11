@@ -23,6 +23,7 @@ namespace WeatherAPI.Controllers
         [JwtAuthorizationFilter]
         public async Task<IActionResult> GetWeather(string city)
         {
+            
             try
             {
                 
