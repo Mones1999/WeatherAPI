@@ -8,14 +8,18 @@ namespace WeatherAPI.Tests
 {
     public class UserControllerTests
     {
+        
         private readonly UserController _userController;
         private readonly Mock<IUserService> _userServiceMock;
 
         public UserControllerTests()
         {
-            IConfiguration configuration = new ConfigurationBuilder().Build();
+            var mockConfSection = new Mock<IConfigurationSection>();
+
+            var mockConfiguration = new Mock<IConfiguration>();
+            mockConfiguration.Setup(x => x["Jwt:SecretKey"]).Returns("30F895C57AA9416F937FBF528D1F2E0D@30F895C57AA9416F937FBF528D1F2E0D@30F895C57AA9416F937FBF528D1F2E0D");
             _userServiceMock = new Mock<IUserService>();
-            _userController = new UserController(_userServiceMock.Object, configuration);
+            _userController = new UserController(_userServiceMock.Object, mockConfiguration.Object);
         }
 
         [Fact]
