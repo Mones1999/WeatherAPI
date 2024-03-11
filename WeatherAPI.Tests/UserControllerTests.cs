@@ -14,8 +14,6 @@ namespace WeatherAPI.Tests
 
         public UserControllerTests()
         {
-            var mockConfSection = new Mock<IConfigurationSection>();
-
             var mockConfiguration = new Mock<IConfiguration>();
             mockConfiguration.Setup(x => x["Jwt:SecretKey"]).Returns("30F895C57AA9416F937FBF528D1F2E0D@30F895C57AA9416F937FBF528D1F2E0D@30F895C57AA9416F937FBF528D1F2E0D");
             _userServiceMock = new Mock<IUserService>();
